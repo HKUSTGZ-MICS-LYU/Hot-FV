@@ -1,0 +1,10 @@
+read_verilog -formal b14_dut.v
+prep -top b14
+memory -nordff
+#memory
+hierarchy -check
+async2sync; 
+dffunmap
+setundef -undriven -init -expose
+
+write_btor b14_dut.btor

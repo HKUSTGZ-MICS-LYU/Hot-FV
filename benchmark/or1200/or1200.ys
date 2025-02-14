@@ -1,0 +1,13 @@
+read_verilog -formal or1200_dut.v
+flatten
+prep
+show
+memory -nomap
+scc
+async2sync
+scc
+dffunmap
+hierarchy -check
+setundef -undriven -init -expose
+sim -clock clk_i -reset rst_i -zinit -rstlen 5 -n 5 -w or1200_top
+write_btor or1200_dut.btor

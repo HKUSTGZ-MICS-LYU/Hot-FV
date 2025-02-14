@@ -1,0 +1,8 @@
+read_verilog -formal RocketTile_dut.v
+prep -top RocketTile
+memory -nordff
+hierarchy -check
+async2sync; 
+dffunmap
+setundef -undriven -init -expose
+write_btor RocketTile_dut.btor

@@ -1,0 +1,8 @@
+read_verilog -formal or1200_except_dut.v
+prep -top or1200_except
+memory -nordff
+hierarchy -check
+async2sync; 
+dffunmap
+setundef -undriven -init -expose
+write_btor or1200_except_dut.btor

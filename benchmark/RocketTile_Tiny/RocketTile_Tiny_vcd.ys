@@ -1,0 +1,12 @@
+read_verilog -formal RocketTile_dut.v
+prep -top RocketTile
+chformal -assume -early
+memory
+hierarchy -check
+async2sync;
+dffunmap
+setundef -zero
+zinit -all
+# sim -clock clock -reset reset -zinit -rstlen 1 -n 1 -w RocketTile 
+# clk2fflogic
+write_btor RocketTile_dut.btor
