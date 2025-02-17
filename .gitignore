@@ -7,5 +7,5 @@ jgproject/
 result.log
 traces/
 AES/
-exp/rand/
+exp/
 exp_*/
