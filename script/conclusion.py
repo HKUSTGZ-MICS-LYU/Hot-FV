@@ -49,12 +49,12 @@ def process_files(root_dir):
     return results
 
 # 使用文件夹的路径
-root_directory = "./Formal_Verifcation_for_testing_design/b12/result_our_without_imd_2"
+root_directory = "/hpc/home/connect.zzheng989/researchlib/Hot-FV/benchmark/RocketTile_Small/exp_without_warm"
 results = process_files(root_directory)
 
 # 创建DataFrame并保存为Excel
 df = pd.DataFrame(results)
 df = df.sort_values('Folder')  # 确保按照Folder列排序
-excel_path = "Rocket_Tiny_Rand.xlsx"
+excel_path = "Rocket_Small_Rand.xlsx"
 df.to_excel(excel_path, index=False)
 print(f"Results saved to {excel_path}")

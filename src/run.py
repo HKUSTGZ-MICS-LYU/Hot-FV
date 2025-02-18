@@ -156,7 +156,7 @@ def run_bmc_old_version(prop_idx, timeout, resume=False,imd_points = None):
         return output, errors
 
 def check_str_in_file(filename,string):
-    for _ in range(30):
+    for _ in range(70):
         if os.path.exists(filename):
             with open(filename, 'r') as file:
                 lines = file.readlines()
@@ -318,25 +318,40 @@ def run_formal(prop_idx, timeout, pono_path, is_first, imd_points=None):
         print("The error of bmc is :\n"+ stderr_bmc +'\n')
         print("The result of bmc is :\n" + stdout_bmc + "\n")
         print("The error of pdr is :\n"+ stderr_pdr +'\n')
-        print("The result of pdr is :\n" + stdout_pdr + "\n")        
-        bmc_bounds = bmc_info_extract(running_path)
+        print("The result of pdr is :\n" + stdout_pdr + "\n")       
+        bmc_bounds, sat_flag = bmc_info_extract(running_path)
         pdr_bounds = pdr_info_extract(running_path)
-        property_scores[prop_idx] = calculate_metrics(bmc_bounds, pdr_bounds, prop_idx, timeout)
+        if sat_flag:
+            property_result[prop_idx] = 'sat'
+            property_scores[prop_idx] = 0
+        else:
+            property_scores[prop_idx] = calculate_metrics(bmc_bounds, pdr_bounds, prop_idx, timeout)
+        # property_scores[prop_idx] = calculate_metrics(bmc_bounds, pdr_bounds, prop_idx, timeout)
     # print(property_result)
 
 def bmc_info_extract(running_path):
+    sat_flag = False
     temp_file = os.path.join(running_path,"bmc.txt")
     # with open(temp_file, 'w') as file:
-    #     file.write(stdout_bmc)        
+    #     file.write(stdout_bmc)
+    
+    # if temp_file is None, wait for the file to be created, timeout is 2s
+    for _ in range(20):
+        if os.path.exists(temp_file):
+            break
+        time.sleep(0.1)
+                
     with open(temp_file, 'r') as file:
         data = file.readlines()
     bounds = []
     for line in data:
+        if 'SAT' in line:
+            sat_flag = True
         parts = line.strip().split()
         if len(parts) == 3:
             bound_number, current_time, total_time = map(float, parts)
             bounds.append((bound_number, current_time, total_time))
-    return bounds
+    return bounds, sat_flag
 
 def pdr_info_extract(running_path):
     temp_file = os.path.join(running_path,"count_clause.txt")
@@ -390,7 +405,7 @@ def bmc_calculation(bmc_bounds, prop_idx,timeout):
     average_increase_rate = sum(increase_rates) / len(increase_rates) if increase_rates else 0
     # end_stability = calculate_stability(increase_rates[-5:]) if len(increase_rates) >= 5 else 0
     scores = running_bnd + 0.2*timeout/running_bnd
-    print("The score of bmc is \n")
+    print("The score of bmc is")
     print(scores)
     # scores = running_bnd
     return scores

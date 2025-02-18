@@ -27,20 +27,31 @@ ifeq ($(WITHOUT_ORD),1)
 endif
 
 
+
 # Default target
 all: help
 
 # Help target
 help:
 	@echo "Available targets:"
+	@echo "  make b01"
+	@echo "  make b06"
+	@echo "  make b10"
+	@echo "  make b11"
+	@echo "  make b12"
+	@echo "  make b14"
+	@echo "  make or1200_Exception"
+	@echo "  make or1200_ICache"
+	@echo "  make or1200_DCache"
+	@echo "  make or1200"
+	@echo "  make or1200"
 	@echo "  make RocketTile_Small"
 	@echo "  make RocketTile_Tiny"
-	@echo "  make b12"
-	@echo "  make or1200"
+	
 
 # Dependency for idx.txt in Tiny
 $(TINY_PATH)/idx.txt: $(TINY_PATH)/RocketTile_dut.v $(TINY_PATH)/RocketTile_dut.btor
-	python script/gen_idx.py \
+	python3 script/gen_idx.py \
 		-verilog_file $(TINY_PATH)/RocketTile_dut.v \
 		-btor_file $(TINY_PATH)/RocketTile_dut.btor \
 		-output_idx $(TINY_PATH)/idx.txt
@@ -51,7 +62,7 @@ b01: $(B01_PATH)/b01_dut.btor
 		-data_file $(B01_PATH)/b01_dut.btor \
 		-collecting_path $(B01_PATH)/result_$(BATCH) \
 		-verify_idx $(B01_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(B01_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -63,7 +74,7 @@ b06: $(B06_PATH)/b06_dut.btor
 		-data_file $(B06_PATH)/b06_dut.btor \
 		-collecting_path $(B06_PATH)/result_$(BATCH) \
 		-verify_idx $(B06_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(B06_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -80,7 +91,7 @@ b10: $(B10_PATH)/b10_dut.btor
 		-data_file $(B10_PATH)/b10_dut.btor \
 		-collecting_path $(B10_PATH)/result_$(BATCH) \
 		-verify_idx $(B10_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(B10_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -97,7 +108,7 @@ b11: $(B11_PATH)/b11_dut.btor
 		-data_file $(B11_PATH)/b11_dut.btor \
 		-collecting_path $(B11_PATH)/result_$(BATCH) \
 		-verify_idx $(B11_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(B11_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -112,7 +123,7 @@ b12: $(B12_PATH)/b12_dut.btor $(B12_PATH)/idx.txt
 		-data_file $(B12_PATH)/b12_dut.btor \
 		-collecting_path $(B12_PATH)/result_$(BATCH) \
 		-verify_idx $(B12_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(B12_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -124,7 +135,7 @@ b14: $(B14_PATH)/b14_dut.btor
 		-data_file $(B14_PATH)/b14_dut.btor \
 		-collecting_path $(B14_PATH)/result_$(BATCH) \
 		-verify_idx $(B14_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(B14_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -140,7 +151,7 @@ or1200: $(OR1200_PATH)/or1200_dut.btor $(OR1200_PATH)/idx.txt
 		-data_file $(OR1200_PATH)/or1200_dut.btor \
 		-collecting_path $(OR1200_PATH)/result_$(BATCH) \
 		-verify_idx $(OR1200_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(OR1200_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -152,7 +163,7 @@ $(OR1200_PATH)/or1200_dut.btor: $(OR1200_PATH)/or1200.ys
 
 # Dependency for idx.txt in or1200
 $(OR1200_PATH)/idx.txt: $(OR1200_PATH)/or1200_dut.v $(OR1200_PATH)/or1200_dut.btor
-	python script/gen_idx.py \
+	python3 script/gen_idx.py \
 		-verilog_file $(OR1200_PATH)/or1200_dut.v \
 		-btor_file $(OR1200_PATH)/or1200_dut.btor \
 		-output_idx $(OR1200_PATH)/idx.txt
@@ -163,7 +174,7 @@ or1200_DCache: $(OR1200_DCACHE_PATH)/or1200_dc_fsm_dut.btor
 		-data_file $(OR1200_DCACHE_PATH)/or1200_dc_fsm_dut.btor \
 		-collecting_path $(OR1200_DCACHE_PATH)/result_$(BATCH) \
 		-verify_idx $(OR1200_DCACHE_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(OR1200_DCACHE_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -180,7 +191,7 @@ or1200_ICache: $(OR1200_ICACHE_PATH)/or1200_ic_fsm_dut.btor
 		-data_file $(OR1200_ICACHE_PATH)/or1200_ic_fsm_dut.btor \
 		-collecting_path $(OR1200_ICACHE_PATH)/result_$(BATCH) \
 		-verify_idx $(OR1200_ICACHE_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(OR1200_ICACHE_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -197,7 +208,7 @@ or1200_Exception: $(OR1200_EXCEPTION_PATH)/or1200_except_dut.btor
 		-data_file $(OR1200_EXCEPTION_PATH)/or1200_except_dut.btor \
 		-collecting_path $(OR1200_EXCEPTION_PATH)/result_$(BATCH) \
 		-verify_idx $(OR1200_EXCEPTION_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(OR1200_EXCEPTION_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
@@ -208,7 +219,7 @@ $(OR1200_EXCEPTION_PATH)/or1200_except_dut.btor: $(OR1200_EXCEPTION_PATH)/or1200
 	cd $(OR1200_EXCEPTION_PATH) && yosys or1200_except.ys
 
 # Target for RocketTile_Small
-RocketTile_Small: $(SMALL_PATH)/RocketTile_dut.btor $(SMALL_PATH)/idx.txt
+RocketTile_Small: 
 	python3 src/run.py \
 		-data_file $(SMALL_PATH)/RocketTile_dut.btor \
 		-collecting_path $(SMALL_PATH)/result_$(BATCH) \
@@ -232,17 +243,13 @@ $(SMALL_PATH)/idx.txt: $(SMALL_PATH)/RocketTile_dut.v $(SMALL_PATH)/RocketTile_d
 		-output_idx $(SMALL_PATH)/idx.txt
 
 # Target for RocketTile_Tiny
-RocketTile_Tiny: $(TINY_PATH)/RocketTile_dut.btor $(TINY_PATH)/idx.txt
-	python3 src/run.py \
+RocketTile_Tiny: $(TINY_PATH)/RocketTile_dut.btor
+	bsub -Is -n 64 python3 src/run.py \
 		-data_file $(TINY_PATH)/RocketTile_dut.btor \
 		-collecting_path $(TINY_PATH)/result_$(BATCH) \
 		-verify_idx $(TINY_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(TINY_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
         $(WITHOUT_ORD_FLAG)
-
-# Dependency for RocketTile_dut.btor in Tiny
-$(TINY_PATH)/RocketTile_dut.btor: $(TINY_PATH)/RocketTile_Tiny_novcd.ys
-	cd $(TINY_PATH) && yosys RocketTile_Tiny_novcd.ys
