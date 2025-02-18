@@ -7,10 +7,18 @@ This repository contains the open source implementation of Hot-FV.
 To execute Hot-FV, use the following commands:
 
 ```bash
-WITHOUT_IMD=0 BATCH=1 make RocketTile_Small
-WITHOUT_IMD=0 BATCH=1 make RocketTile_Tiny
-WITHOUT_IMD=0 BATCH=1 make or1200
-WITHOUT_IMD=0 BATCH=1 make b12
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make b01
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make b06
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make b10
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make b11
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make b12
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make b14
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make or1200_Exception
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make or1200_ICache
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make or1200_DCache
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make or1200
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make RocketTile_Small
+WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make RocketTile_Tiny
 ```
 
 Results will be saved in `benchmark/[target]/result_[BATCH]`.
