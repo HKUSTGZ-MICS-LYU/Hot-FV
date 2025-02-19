@@ -23,8 +23,6 @@ WITHOUT_IMD=0 WITHOUT_ORD=0 BATCH=1 make RocketTile_Tiny
 
 Results will be saved in `benchmark/[target]/result_[BATCH]`.
 
-Our results are available in `benchmark/[target]/[exp_with_warm or exp_without_warm]`.
-
 ## Folder Structure Explanation
 
 Within the target directory of `benchmark`:

@@ -224,7 +224,7 @@ RocketTile_Small:
 		-data_file $(SMALL_PATH)/RocketTile_dut.btor \
 		-collecting_path $(SMALL_PATH)/result_$(BATCH) \
 		-verify_idx $(SMALL_PATH)/idx.txt \
-		-num_cores 50 \
+		-num_cores 10 \
 		-cfg_file $(SMALL_PATH)/cfg.pkl \
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \

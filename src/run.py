@@ -334,7 +334,6 @@ def bmc_info_extract(running_path):
     temp_file = os.path.join(running_path,"bmc.txt")
     # with open(temp_file, 'w') as file:
     #     file.write(stdout_bmc)
-    
     # if temp_file is None, wait for the file to be created, timeout is 2s
     for _ in range(20):
         if os.path.exists(temp_file):
