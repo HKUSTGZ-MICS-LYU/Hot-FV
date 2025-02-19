@@ -229,6 +229,19 @@ RocketTile_Small:
 		-pono_path $(PONO_PATH) \
 		$(WITHOUT_IMD_FLAG) \
         $(WITHOUT_ORD_FLAG)
+
+# Target for RocketTile_Tiny
+RocketTile_Tiny:
+	bsub -Is -n 64 python3 src/run.py \
+		-data_file $(TINY_PATH)/RocketTile_dut.btor \
+		-collecting_path $(TINY_PATH)/result_$(BATCH) \
+		-verify_idx $(TINY_PATH)/idx.txt \
+		-num_cores 10 \
+		-cfg_file $(TINY_PATH)/cfg.pkl \
+		-pono_path $(PONO_PATH) \
+		$(WITHOUT_IMD_FLAG) \
+        $(WITHOUT_ORD_FLAG)
+
 		
 
 # Dependency for RocketTile_dut.btor
@@ -242,14 +255,3 @@ $(SMALL_PATH)/idx.txt: $(SMALL_PATH)/RocketTile_dut.v $(SMALL_PATH)/RocketTile_d
 		-btor_file $(SMALL_PATH)/RocketTile_dut.btor \
 		-output_idx $(SMALL_PATH)/idx.txt
 
-# Target for RocketTile_Tiny
-RocketTile_Tiny: $(TINY_PATH)/RocketTile_dut.btor
-	bsub -Is -n 64 python3 src/run.py \
-		-data_file $(TINY_PATH)/RocketTile_dut.btor \
-		-collecting_path $(TINY_PATH)/result_$(BATCH) \
-		-verify_idx $(TINY_PATH)/idx.txt \
-		-num_cores 10 \
-		-cfg_file $(TINY_PATH)/cfg.pkl \
-		-pono_path $(PONO_PATH) \
-		$(WITHOUT_IMD_FLAG) \
-        $(WITHOUT_ORD_FLAG)
