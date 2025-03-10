@@ -109,7 +109,7 @@ def extract_cfg(cfg_data):
     
     return cfg
     
-# file_path = "/hpc/home/connect.zzheng989/researchlib/hotfv/benchmark/RocketTile_Small/cfg.pkl"
+# file_path = "benchmark/RocketTile_Small/cfg.pkl"
 # cfg_data = read_cfg_pkl(file_path)
 # cfg_data['assign_to_count'] = invert_dict(cfg_data['count_to_assign'])
 # cfg_data['block_to_assign'] = invert_dict(cfg_data['assign_to_block'])

@@ -10,7 +10,7 @@ files = [
         #  '/hpc/home/connect.zzheng989/Formal_Verifcation_for_testing_design/Rocket/result_ordering_only_bnd/result.txt',
         #  '/hpc/home/connect.zzheng989/Formal_Verifcation_for_testing_design/Rocket/result_ordering_add_increase_rate/result.txt',
         #  '/hpc/home/connect.zzheng989/Formal_Verifcation_for_testing_design/Rocket/result_ordering_add_increase_rate/result.txt'
-         ]  # 假设你的文件名列表
+         ]  
 
 # 创建一个新的图形和轴对象
 fig, ax = plt.subplots()

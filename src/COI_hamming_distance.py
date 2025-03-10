@@ -131,9 +131,9 @@ if __name__ == '__main__':
     parser.add_argument('idx_path', action='store', type=str)
     parser.add_argument('collecting_path', action='store', type=str)
     parser.add_argument('btor_file', action='store', type=str)
-    opts = parser.parse_args(args=['/hpc/home/connect.zzheng989/Formal_Verifcation_for_testing_design/Rocket/idx.txt',
+    opts = parser.parse_args(args=['bench/Rocket/idx.txt',
                                    "Static_COI",
-                                '/hpc/home/connect.zzheng989/Formal_Verifcation_for_testing_design/Rocket/RocketTile_assert.btor'
+                                'bench/Rocket/RocketTile_assert.btor'
                                 ])
     
     if os.path.exists(opts.collecting_path)==False:
