@@ -9,3 +9,5 @@ traces/
 AES/
 exp/
 exp_*/
+src/plot_coverage.py
+src/cover2assert.py
