@@ -2,6 +2,10 @@
 
 This repository contains the open source implementation of Hot-FV.
 
+## Envrionment
+
+We have tested our work in Ubuntu-20.04 and Centos7. If you encounter some package missing in Python, simply install it.
+
 ## How to Run
 
 To execute Hot-FV, use the following commands:
@@ -38,4 +42,3 @@ Within the `exp_` folder in the target of `benchmark`:
 - `result.txt`: Shows branch coverage of our experiment (excluding `reset` related branches).
 - `unknown.txt` and `unreachable.txt`: Indicate unknown and unreachable targets.
 - `score.txt`: Logs the running process, including warm state selection.
-
