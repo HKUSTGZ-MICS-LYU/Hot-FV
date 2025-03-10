@@ -39,4 +39,3 @@ Within the `exp_` folder in the target of `benchmark`:
 - `unknown.txt` and `unreachable.txt`: Indicate unknown and unreachable targets.
 - `score.txt`: Logs the running process, including warm state selection.
 
-The JasperGold results are located in `exp/jg`. You can refer to `jg.log` for logs in different targets.
