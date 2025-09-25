@@ -42,3 +42,10 @@ Within the `exp_` folder in the target of `benchmark`:
 - `result.txt`: Shows branch coverage of our experiment (excluding `reset` related branches).
 - `unknown.txt` and `unreachable.txt`: Indicate unknown and unreachable targets.
 - `score.txt`: Logs the running process, including warm state selection.
+
+## Citation
+
+Ziyue Zheng*, Zhiyuan Yan*, Xiangchen Meng, Guangyu Hu, Hongce Zhang, Yangdi Lyu, Hot-FV: A Semi-Formal Test
+Generation Framework for RTL Functional Coverage using Warm Starting States. ICCD 2025.
+
+*: Same Contribution
